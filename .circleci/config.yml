@@ -5,8 +5,17 @@ workflows:
   build:
     jobs:
       - build
+      - check
 
 jobs:
+  check:
+     steps:
+      - run:
+          name: ls
+          command: 'ls'
+      - store_test_results:
+          path: test-results.xml
+            
   build:
     working_directory: ~/mern-starter
     docker:
